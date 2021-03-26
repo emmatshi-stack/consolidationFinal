@@ -38,13 +38,14 @@ gem 'date'
 gem 'sendgrid-ruby'
 gem 'ibm_watson'
 
-gem "zendesk_api"
-gem "dropbox-api"
-gem 'gmaps4rails'
+gem "zendesk_api", '1.28.0'
+#gem "dropbox-api"
+#gem 'gmaps4rails'
 
-gem "twilio-ruby"
-# twilio
-gem 'dropbox_api'
+#gem "twilio-ruby"
+#gem 'dropbox_api'
+
+
 
 
 
