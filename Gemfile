@@ -40,7 +40,7 @@ gem 'ibm_watson'
 
 gem "zendesk_api", '1.28.0'
 #gem "dropbox-api"
-#gem 'gmaps4rails'
+gem 'gmaps4rails'
 
 #gem "twilio-ruby"
 #gem 'dropbox_api'
