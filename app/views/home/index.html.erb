@@ -761,100 +761,63 @@
 
 
 					<div class="row">
-
+						<div class="col-md-6 col-sm-6">
 						<!-- FORM -->
-						<%= form_for (Lead.new), html: { multipart: true } do |f| %> 
-							<div class="col-md-8 col-sm-8">
-
+							<%= form_for (Lead.new), html: { multipart: true } do |f| %> 
+							
 								<h3>Drop us a line or just say <strong><em>Hello!</em></strong></h3>
 								
 								<fieldset>
 									<input type="hidden" name="action" value="contact_send" />
 
 									<div class="row">
-										<div id="contact_full_name" class="col-md-4" >
-											<%= f.label :full_name %>
-                			<%= f.text_field :full_name , class:"form-control" %>
+										<div id="contact_full_name" class="col-md-6" >
+												<%= f.label :full_name %>
+												<%= f.text_field :full_name , class:"form-control" %>
 										</div>
-										<div id="contact_email" class="col-md-4" >
-											<%= f.label :email %>
-                			<%= f.email_field :email, class:"form-control" %>
+										<div id="contact_email" class="col-md-6" >
+												<%= f.label :email %>
+												<%= f.email_field :email, class:"form-control" %>
 										</div>
-										<div id="contact_phone" class="col-md-4" >
-											<%= f.label :phone %>
-                			<%= f.text_field :phone , class:"form-control" %>
+										<div id="contact_phone" class="col-md-6" >
+												<%= f.label :phone %>
+												<%= f.text_field :phone , class:"form-control" %>
 										</div>
-									</div>
-									<div class="row">
-										<div id="contact_company_name" class="col-md-4" >
-											<%= f.label :company_name %>
-                			<%= f.text_field :company_name , class:"form-control" %>
+										<div id="contact_company_name" class="col-md-6" >
+												<%= f.label :company_name %>
+												<%= f.text_field :company_name , class:"form-control" %>
 										</div>
-										<div id="contact_projetc_name" class="col-md-4" >
-											<%= f.label :project_name %>
-                			<%= f.text_field :project_name , class:"form-control" %>
+										<div id="contact_projetc_name" class="col-md-6" >
+												<%= f.label :project_name %>
+												<%= f.text_field :project_name , class:"form-control" %>
 										</div>
-										<div id="contact_department" class="col-md-4" >
-											<%= f.label :department %>
-            					<%= f.select :department, [[' ',' '],['Sales','sales'],['Support','support'],['Administration','administration']] %>
+										<div id="contact_department" class="col-md-6" >
+												<%= f.label :department %>
+												<%= f.select :department, [[' ',' '],['Sales','sales'],['Support','support'],['Administration','administration']] %>
 										</div>
-									</div>
-									<div class="row">
+
 										<div id="contact_project_description" class="col-md-12" >
-											<%= f.label :project_description %>
-											<%= f.text_area :project_description, :cols => 54, :rows => 6 %>
+												<%= f.label :project_description %>
+												<%= f.text_area :project_description, :cols => 54, :rows => 6 %>
 										</div>
-									</div>
-
-									<div class="row">
 										<div id="contact_message" class="col-md-12" >
-											<%= f.label :message %>
-											<%= f.text_area :message, :cols => 54, :rows => 6 %>											</div>
+												<%= f.label :message %>
+												<%= f.text_area :message, :cols => 54, :rows => 6 %>
 										</div>
-									</div>	
-								<%# =============================attachment file upload================================ %>
-									<div class="row">
+										<%# =============================attachment file upload================================ %>
 										<div class="col-md-12">
-										<%= f.label :file %>
-  										<%= f.file_field :file %>
+											<%= f.label :file %>
+											<%= f.file_field :file %>
 										</div>
-									</div>
-								<%# =============================attachment file upload================================ %>
-
+										<div class="col-md-12 mt-25">
+											<%= submit_tag "Send Message" , class: 'btn btn-primary'  %><i class:"fa fa-check"></i>
+										</div>
+									</div>  
+						
 								</fieldset>
-
-								<div class="row">
-									<div class="col-md-12">
-										<%= submit_tag "Send Message" , class: 'btn btn-primary'  %><i class:"fa fa-check"></i>
-									</div>
-								</div>
 							<% end %>
 						</div>
 						
-						<!-- /FORM -->
-						<%# <%= image_tag Lead.first.file_attachment.url %> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 						<!-- INFO -->
 						<div class="col-md-4 col-sm-4">
 

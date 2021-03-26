@@ -139,6 +139,7 @@ ActiveRecord::Schema.define(version: 2021_03_23_033614) do
     t.string "reports"
     t.string "status"
     t.string "employee_id"
+    t.bigint "author"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "customer_id"
@@ -146,8 +147,7 @@ ActiveRecord::Schema.define(version: 2021_03_23_033614) do
     t.bigint "battery_id"
     t.bigint "column_id"
     t.bigint "elevator_id"
-    t.bigint "author_id"
-    t.index ["author_id"], name: "index_interventions_on_author_id"
+    t.index ["author"], name: "fk_rails_372877a32f"
     t.index ["battery_id"], name: "index_interventions_on_battery_id"
     t.index ["building_id"], name: "index_interventions_on_building_id"
     t.index ["column_id"], name: "index_interventions_on_column_id"
@@ -228,6 +228,6 @@ ActiveRecord::Schema.define(version: 2021_03_23_033614) do
   add_foreign_key "interventions", "columns"
   add_foreign_key "interventions", "customers"
   add_foreign_key "interventions", "elevators"
-  add_foreign_key "interventions", "employees", column: "author_id"
+  add_foreign_key "interventions", "employees", column: "author"
   add_foreign_key "leads", "customers"
 end

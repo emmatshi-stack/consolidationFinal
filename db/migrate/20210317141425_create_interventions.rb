@@ -7,6 +7,7 @@ class CreateInterventions < ActiveRecord::Migration[5.2]
       t.string :reports
       t.string :status
       t.string :employee_id
+      t.bigint :author
 
       t.timestamps
     end

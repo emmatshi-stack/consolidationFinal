@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get '/404'          => 'pages#404'
   get '/quotes'       => 'quotes#quotes'
   get '/interventions'       => 'interventions#interventions'
+  get '/success'       => 'success#success'
   post '/interventions/save'       => 'interventions#save'
   post '/interventions/getbuildings'       => 'interventions#getbuildings'
   post '/interventions/getbatteries'       => 'interventions#getbatteries'

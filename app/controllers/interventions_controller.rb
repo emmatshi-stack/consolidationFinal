@@ -1,10 +1,19 @@
 class InterventionsController < ApplicationController
+    before_action :require_login
+
+    def require_login
+        if !current_user
+          flash[:error] = "You must be logged in to access this section"
+          redirect_to main_app.root_path # halts request cycle
+        end
+      end
+
     def interventions
         @interventions = Intervention.new
         puts @interventions
         puts params
         
-        @isSaved = params["isSaved"]
+        
     end
     
     def getbuildings
@@ -75,38 +84,107 @@ class InterventionsController < ApplicationController
         p "user information: "
         p current_user
 
-        intervention.author_id = current_user.id
-        intervention.result = "Incomplet"
+        intervention.author = current_user.id
+        intervention.result = "Incomplete"
         intervention.reports = description
         intervention.status = "Pending"
         intervention.customer_id = customer
         intervention.building_id = building
+        intervention.employee_id = employee
         if battery != "-1"
             intervention.battery_id = battery
-        end 
+
+        end
+
+        
+        
         
         if column != "-1"
             intervention.column_id = column
+            intervention.battery_id = nil
+            
+
+            
         end 
 
         if elevator != "-1"
             intervention.elevator_id = elevator
+            intervention.column_id = nil
+            intervention.battery_id = nil
+
         end 
 
         
         
-        intervention.employee_id = employee
+        
+        customer_int = Customer.where(:id => intervention.customer_id)
+        employee_int = Employee.where(:id => intervention.employee_id)
+        
+            
+
+
+        p "#####################################start#############################################"
+        p customer_int
+        p "#########################################middle############################################"
+
+        p employee_int
+        p "#########################################end############################################"
 
 
 
         puts intervention.inspect
-        intervention.save!
+        #intervention.save!
+        if intervention.save
+            # fact_contacts()
+            #sendMail()
+            #dropbox()
+
+
+            # client = ZendeskAPI::Client.new do |config|
+            #     config.url = ENV["ZENDESK_URL"]
+            #     config.username = ENV["ZENDESK_EMAIL"]
+            #     config.token = ENV["ZENDESK_TOKEN"]
+            # end
+    
+            # ZendeskAPI::Ticket.create!(client,
+            # :subject => "#{intervention.id} from #{intervention.id}",
+            # :comment => {
+            #     :value => "An intervention form has been submitted by the employee having the following information: 
+            #     The Requester: #{intervention.author} 
+            #     The Customer: #{customer_int.company_name} 
+            #     Building ID: #{intervention.building_id}
+            #     The Battery ID: #{intervention.battery_id}
+            #     The Column ID : #{intervention.column_id}
+            #     Elevator ID if specified: #{intervention.elevator_id}
+            #     The employee to be assigned to the task: #{customer_int.first_name} #{employeE.last_name}
+            #     Description of the request for intervention: #{intervention.reports}
+
+            #     Thank you Rocket Elevator is there for your vertical transportation need.
+    
+                
+    
+            #     Attached Message: 
+    
+            #     The Contact uploaded an attachment"
+            # },
+            # :priority => "normal",
+            # :type => "question"
+            # )
+
+
+            redirect_to success_url
+       # else    
+        #    redirect_to "/intervention", notice: "Invalid fields!"
+        end
+       
+    
+
         #puts battery.split(" - ")[0]
 
         #        {"customer_id"=>"1", "building_id"=>"38 - Franklyn Terry", "battery_id"=>"38 - Inactive", "column_id"=>"153 - Active", "elevator_id"=>"Select elevator", "employee_id"=>"17", "description"=>"hshhhstgegre"}, "commit"=>"name of button here", "controller"=>"interventions", "action"=>"save"}
 
         #redirect_to :action => "interventions", :isSaved => true
-        redirect_to quotes_url
+        
     end
 
     

@@ -356,7 +356,7 @@ p employee
       column_id: columns[col].id,
       elevator_id: elevator[el].id,
       employee_id: employee[em].id,
-      author_id: employee[em].id,
+      author: employee[em].id,
   )
   intervention.save!
   puts intervention.inspect
