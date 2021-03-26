@@ -38,7 +38,7 @@ gem 'date'
 gem 'sendgrid-ruby'
 gem 'ibm_watson'
 
-gem "zendesk_api"
+#gem "zendesk_api"
 gem "dropbox-api"
 gem 'gmaps4rails'
 
