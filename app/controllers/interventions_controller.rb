@@ -140,36 +140,34 @@ class InterventionsController < ApplicationController
             #dropbox()
 
 
-            # client = ZendeskAPI::Client.new do |config|
-            #     config.url = ENV["ZENDESK_URL"]
-            #     config.username = ENV["ZENDESK_EMAIL"]
-            #     config.token = ENV["ZENDESK_TOKEN"]
-            # end
+            client = ZendeskAPI::Client.new do |config|
+                config.url = ENV["ZENDESK_URL"]
+                config.username = ENV["ZENDESK_EMAIL"]
+                config.token = ENV["ZENDESK_TOKEN"]
+            end
     
-            # ZendeskAPI::Ticket.create!(client,
-            # :subject => "#{intervention.id} from #{intervention.id}",
-            # :comment => {
-            #     :value => "An intervention form has been submitted by the employee having the following information: 
-            #     The Requester: #{intervention.author} 
-            #     The Customer: #{customer_int.company_name} 
-            #     Building ID: #{intervention.building_id}
-            #     The Battery ID: #{intervention.battery_id}
-            #     The Column ID : #{intervention.column_id}
-            #     Elevator ID if specified: #{intervention.elevator_id}
-            #     The employee to be assigned to the task: #{customer_int.first_name} #{employeE.last_name}
-            #     Description of the request for intervention: #{intervention.reports}
+            ZendeskAPI::Ticket.create!(client,
+            :subject => "#{intervention.id} from #{intervention.id}",
+            :comment => {
+                :value => "An intervention form has been submitted by the employee having the following information: 
+                The Requester: #{intervention.author} ftps://waws-prod-blu-207.ftp.azurewebsites.windows.net/site/wwwroot 
+                Building ID: #{intervention.building_id}
+                The Battery ID: #{intervention.battery_id}
+                The Column ID : #{intervention.column_id}
+                Elevator ID if specified: #{intervention.elevator_id}
+                Description of the request for intervention: #{intervention.reports}
 
-            #     Thank you Rocket Elevator is there for your vertical transportation need.
+                Thank you Rocket Elevator is there for your vertical transportation need.
     
                 
     
-            #     Attached Message: 
+                Attached Message: 
     
-            #     The Contact uploaded an attachment"
-            # },
-            # :priority => "normal",
-            # :type => "question"
-            # )
+                The Contact uploaded an attachment"
+            },
+            :priority => "normal",
+            :type => "question"
+            )
 
 
             redirect_to success_url
