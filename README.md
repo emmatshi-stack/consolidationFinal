@@ -2,6 +2,11 @@
 a link to my API https://apiconsolidation.azurewebsites.net/ and the link to the API code is git@github.com:emmatshi-stack/Rocket-Elevators-Rest-API-Consolidation.git
 
 GET: Returns all fields of all intervention Request records that do not have a start date and are in "Pending" status. : https://apiconsolidation.azurewebsites.net/Interventions/getinterventionpending
+PUT: Change the status of the intervention request to "InProgress" and add a start date and time (Timestamp).: https://apiconsolidation.azurewebsites.net/id/updatestatuswithdatestart
+
+PUT: Change the status of the request for action to "Completed" and add an end date and time (Timestamp).: https://apiconsolidation.azurewebsites.net/id/updatestatuswithdateend
+
+There is the link to see a demonstration :https://youtu.be/yWNjsOktbLs
 # Week 7
 #  Life is a Web Service
 If more informations is needed on database and basic operation of our Web App please refer to Week 4 and Week 5's Readme at https://github.com/officialmxm/Rocket_Elevators_Information_System
