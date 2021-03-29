@@ -1,5 +1,7 @@
 # Rocket Elevators Information System <img src="app/assets/images/favicon.png" align="right" alt="Rocket Elevators logo by Maxime Auger" width="100" height="">
+a link to my API https://apiconsolidation.azurewebsites.net/ and the link to the API code is git@github.com:emmatshi-stack/Rocket-Elevators-Rest-API-Consolidation.git
 
+GET: Returns all fields of all intervention Request records that do not have a start date and are in "Pending" status. : https://apiconsolidation.azurewebsites.net/Interventions/getinterventionpending
 # Week 7
 #  Life is a Web Service
 If more informations is needed on database and basic operation of our Web App please refer to Week 4 and Week 5's Readme at https://github.com/officialmxm/Rocket_Elevators_Information_System
