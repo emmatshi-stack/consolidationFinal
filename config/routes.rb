@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/interventions'       => 'interventions#interventions'
   get '/success'       => 'success#success'
   post '/interventions/save'       => 'interventions#save'
+  # routes for the ajax post method from the form to the controller
   post '/interventions/getbuildings'       => 'interventions#getbuildings'
   post '/interventions/getbatteries'       => 'interventions#getbatteries'
   post '/interventions/getcolumns'       => 'interventions#getcolumns'

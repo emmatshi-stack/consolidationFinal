@@ -1,13 +1,13 @@
 class InterventionsController < ApplicationController
     before_action :require_login
-
+    # Restricting action only to log in users with authorisation
     def require_login
         if !current_user
           flash[:error] = "You must be logged in to access this section"
           redirect_to main_app.root_path # halts request cycle
         end
       end
-
+    # definning a new interventions
     def interventions
         @interventions = Intervention.new
         puts @interventions
@@ -15,7 +15,7 @@ class InterventionsController < ApplicationController
         
         
     end
-    
+    # selecting building with belonging to the customer id
     def getbuildings
         puts params
         custid = params["custormerid"]
@@ -28,7 +28,7 @@ class InterventionsController < ApplicationController
         end
 
     end
-
+    # selecting batteries with belonging to the building selected
     def getbatteries
         puts params
         buildid = params["buildingid"]
@@ -42,6 +42,7 @@ class InterventionsController < ApplicationController
             format.json { render json: batteries }
         end
     end
+    # selecting column with belonging to the battery selected
     def getcolumns
         puts params
         colid = params["batteryid"]
@@ -54,7 +55,7 @@ class InterventionsController < ApplicationController
             format.json { render json: columns }
         end
     end
-
+    # selecting elevators with belonging to the column selected
     def getelevators
         puts params
         elid = params["columnid"]
@@ -68,7 +69,7 @@ class InterventionsController < ApplicationController
         end
     end
 
-
+    # saving the informations coming from the intervention form
     def save
         intervention =  Intervention.new
         puts params
@@ -98,7 +99,7 @@ class InterventionsController < ApplicationController
 
         
         
-        
+        #restricting the save of column data when battery selected
         if column != "-1"
             intervention.column_id = column
             intervention.battery_id = nil
@@ -106,7 +107,7 @@ class InterventionsController < ApplicationController
 
             
         end 
-
+        #restricting the save of elevators data when column and battery selected selected
         if elevator != "-1"
             intervention.elevator_id = elevator
             intervention.column_id = nil
@@ -139,7 +140,7 @@ class InterventionsController < ApplicationController
             #sendMail()
             #dropbox()
 
-
+            #call to send a zendesk ticket
             client = ZendeskAPI::Client.new do |config|
                 config.url = ENV["ZENDESK_URL"]
                 config.username = ENV["ZENDESK_EMAIL"]
@@ -169,19 +170,11 @@ class InterventionsController < ApplicationController
             :type => "question"
             )
 
-
+            #redirecting to success page after saving the form
             redirect_to success_url
-       # else    
-        #    redirect_to "/intervention", notice: "Invalid fields!"
+      
         end
        
-    
-
-        #puts battery.split(" - ")[0]
-
-        #        {"customer_id"=>"1", "building_id"=>"38 - Franklyn Terry", "battery_id"=>"38 - Inactive", "column_id"=>"153 - Active", "elevator_id"=>"Select elevator", "employee_id"=>"17", "description"=>"hshhhstgegre"}, "commit"=>"name of button here", "controller"=>"interventions", "action"=>"save"}
-
-        #redirect_to :action => "interventions", :isSaved => true
         
     end
 
