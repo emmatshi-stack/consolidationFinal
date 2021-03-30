@@ -85,4 +85,7 @@ gem 'underscore-rails', '~> 1.8', '>= 1.8.3'
 
 gem "newrelic_rpm"
 
+gem 'rspec-rails', '~> 4.1.0'
+gem 'httparty'
+
 
