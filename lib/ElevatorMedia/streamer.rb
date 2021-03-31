@@ -14,9 +14,6 @@ class Streamer
     
         puts html_body
         #return html_body
-
-
-
         
 
     return html_body
