@@ -36,5 +36,3 @@ describe Streamer do
     
 
 end
-
-

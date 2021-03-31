@@ -56,6 +56,8 @@ gem 'gmaps4rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 4.1.0'
+  gem 'capybara', '>= 2.15'
   
 end
 
@@ -73,9 +75,10 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '>= 2.15'
+  
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+  
 end
 
 
@@ -85,7 +88,7 @@ gem 'underscore-rails', '~> 1.8', '>= 1.8.3'
 
 gem "newrelic_rpm"
 
-gem 'rspec-rails', '~> 4.1.0'
+
 gem 'httparty'
 
 
