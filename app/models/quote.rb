@@ -1,4 +1,7 @@
 class Quote < ApplicationRecord
+    validates_presence_of :building_type
+    validates_presence_of :quotes_email
+    
     # after_save :new_zendesk_ticket_quote
 
     # def new_zendesk_ticket_quote

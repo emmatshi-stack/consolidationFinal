@@ -1,6 +1,7 @@
 class InterventionsController < ApplicationController
-    before_action :require_login
+    #before_action :require_login
     # Restricting action only to log in users with authorisation
+    
     def require_login
         if !current_user
           flash[:error] = "You must be logged in to access this section"
@@ -17,12 +18,12 @@ class InterventionsController < ApplicationController
     end
     # selecting building with belonging to the customer id
     def getbuildings
+        
         puts params
         custid = params["custormerid"]
 
         buildings = Building.where(:customer_id => custid)
         puts buildings.inspect
-        puts "#################################################"
         respond_to do |format|
          format.json { render json: buildings }
         end
@@ -51,6 +52,7 @@ class InterventionsController < ApplicationController
 
         puts columns.inspect
         
+        @x = columns
         respond_to do |format|
             format.json { render json: columns }
         end
