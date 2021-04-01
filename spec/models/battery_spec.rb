@@ -9,17 +9,17 @@ RSpec.describe Battery, type: :model do
 
   
 
-  it "is not valid without a title" do
+  it "is not valid without a status" do
     subject.status = nil
     expect(subject).to_not be_valid
   end
 
-  it "is not valid without a description" do
+  it "is not valid without a type_building" do
     subject.type_building = nil
     expect(subject).to_not be_valid
   end
 
-  it "is not valid without a start_date" do
+  it "is not valid without a certificate_operations" do
     subject.certificate_operations = nil
     expect(subject).to_not be_valid
   end
