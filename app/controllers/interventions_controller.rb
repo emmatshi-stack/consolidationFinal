@@ -22,6 +22,7 @@ class InterventionsController < ApplicationController
         puts params
         custid = params["custormerid"]
 
+        var s = "select * from customer where cusotmerid = "+custid
         buildings = Building.where(:customer_id => custid)
         puts buildings.inspect
         respond_to do |format|
